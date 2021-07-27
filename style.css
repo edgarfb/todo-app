@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+}
+
+.flex-center, .list .cross, .todo-input .cross, .list .check, .todo-input .check, .todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-container {
+  height: 100vh;
+}
+.todo-container .background {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100vh;
+}
+.todo-container .background .head-bg {
+  background-image: url("./images/bg-desktop-dark.jpg");
+  height: 30vh;
+  width: 100vw;
+}
+.todo-container .background .bottom-bg {
+  background-color: #161722;
+  height: 70vh;
+  width: 100vw;
+}
+
+.todo {
+  width: 50%;
+  min-height: 450px;
+  min-width: 600px;
+  z-index: 100;
+}
+.todo .todo-title {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.todo .todo-title h1 {
+  margin: 0;
+}
+.todo .todo-title .todo-title-img img {
+  cursor: pointer;
+}
+.list, .todo-input {
+  display: flex;
+  justify-content: space-between;
+  background: #25273c;
+  color: white;
+  padding: 1rem;
+}
+.list .check, .todo-input .check {
+  cursor: pointer;
+  width: 18px;
+  height: 15px;
+  border: 1px solid #393a4c;
+  border-radius: 50%;
+  margin: 1.5px 0.5rem;
+}
+.list .checked, .todo-input .checked {
+  background-image: linear-gradient(#57ddff, #c058f3);
+}
+.list .check-icon, .todo-input .check-icon {
+  display: none;
+  width: 50%;
+}
+.list .check-icon-block, .todo-input .check-icon-block {
+  display: block;
+}
+.list .cross, .todo-input .cross {
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+}
+.list .cross img, .todo-input .cross img {
+  width: 85%;
+}
+.list li, .todo-input li {
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #cacde8;
+}
+.list .li-line, .todo-input .li-line {
+  text-decoration: line-through;
+}
+
+.list, .todo-input {
+  border-bottom: 1px solid #393a4c;
+}
+
+.todo-input {
+  margin: 1rem 0;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.todo-summary {
+  justify-content: space-between;
+  color: #4d5066;
+  font-size: 0.8rem;
+  border: none;
+}
+
+/*# sourceMappingURL=style.css.map */
