@@ -12,7 +12,11 @@ html {
   font-size: 18px;
 }
 
+<<<<<<< HEAD
 .flex-center, .list .cross, .todo-input .cross, .list .check, .todo-input .check, .list .front-layer, .todo-input .front-layer, .todo-container {
+=======
+.flex-center, .list .cross, .todo-input .cross, .list .check, .todo-input .check, .todo-container {
+>>>>>>> 424d8730938137fa83f9035bdc343da4b3051dea
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,17 +68,25 @@ html {
   color: white;
   padding: 1rem;
 }
+<<<<<<< HEAD
 .list .check, .todo-input .check, .list .front-layer, .todo-input .front-layer {
+=======
+.list .check, .todo-input .check {
+  cursor: pointer;
+>>>>>>> 424d8730938137fa83f9035bdc343da4b3051dea
   width: 18px;
   height: 15px;
   border: 1px solid #393a4c;
   border-radius: 50%;
   margin: 1.5px 0.5rem;
+<<<<<<< HEAD
   position: relative;
 }
 .list .front-layer, .todo-input .front-layer {
   cursor: pointer;
   position: absolute;
+=======
+>>>>>>> 424d8730938137fa83f9035bdc343da4b3051dea
 }
 .list .checked, .todo-input .checked {
   background-image: linear-gradient(#57ddff, #c058f3);
