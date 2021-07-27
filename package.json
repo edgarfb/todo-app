@@ -1,0 +1,30 @@
+{
+  "name": "todo-app-main",
+  "version": "1.0.0",
+  "description": "Todo App Frontend Mentor Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch styles.scss style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edgarfb/todo-app.git"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "javascript",
+    "frontend-mentor",
+    "challenges"
+  ],
+  "author": "Edgar Fernando Britez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edgarfb/todo-app/issues"
+  },
+  "homepage": "https://github.com/edgarfb/todo-app#readme",
+  "devDependencies": {
+    "sass": "^1.36.0"
+  }
+}
