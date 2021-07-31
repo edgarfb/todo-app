@@ -100,11 +100,15 @@ function displayAll() {
 
 function displayActive() {
     let actives = Array.from(d.querySelectorAll('.newList'));
-    // let activesFilter = actives.filter(el => ) 
-    console.log(actives);
+    let activesFilter = actives.filter(el => el.classList.contains('ischeck') === false); 
+    let completed = actives.filter(el => el.classList.contains('ischeck'));
+    activesFilter.forEach(el => el.classList.remove('hide'));
+    completed.forEach(el => el.classList.add('hide'));
+    // continue here.... I need to refresh the items counter tought
 }
 
 
+// Working..... 
 function displayCompleted() {
     let completed = d.querySelectorAll('.ischeck');
     let notCompleted = d.querySelectorAll('.newList')
