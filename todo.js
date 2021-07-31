@@ -3,12 +3,14 @@ let d = document;
 let todoNew = d.querySelector('#todo-new');
 let todoList = d.querySelector('.todo-list');
 let counter = d.querySelector('#counter');
+let clearBtn = d.querySelector('.clear');
+clearBtn.addEventListener('click', clearCompleted);
 
 
 
 // Set the current amout of itens
 counter.innerHTML=  d.querySelectorAll('.list').length - 1;
-
+// Create new list when the user press enter
 todoNew.addEventListener('keyup', function(e) {
     
     if(e.key === 'Enter') {
@@ -17,9 +19,8 @@ todoNew.addEventListener('keyup', function(e) {
         // reset input fild
         todoNew.value = '';
         // Set the current amout of itens
-        counter.innerHTML=  d.querySelectorAll('.list').length - 1;
+        counter.innerHTML =  d.querySelectorAll('.list').length - 1;
     }
-    // continue here-- works
 })
 
 // crear un nuevo elemento y agregarlo a la lista
@@ -29,19 +30,12 @@ todoNew.addEventListener('keyup', function(e) {
 
 function createTodo(value) {
     let div = d.createElement('div');
-    
-    
     let li = d.createElement('li');
-    let check = createCheck(li);
-    
-    let close = d.createElement('div');
-    close.setAttribute('class', 'cross');
-    close.setAttribute('id', 'cross');
+    let check = createCheck(li, div);
     li.innerHTML = value;
-    div.className = 'list';
+    div.classList.add('list', 'newList');
     div.appendChild(check);
     div.appendChild(li);
-    div.appendChild(close);
     todoList.appendChild(div);
 }
 
@@ -50,25 +44,41 @@ function createTodo(value) {
 // check is the container
 // checkIcon is the icon
 // To avoid colision between check and checkIcon I created a frontLayer to managed the click event.
-function createCheck(toLine) {
+function createCheck(toLine, parent) {
     let check = d.createElement('div');
-    let frontLayer = d.createElement('div');
-    frontLayer.setAttribute('class', 'front-layer');
-    let checkIcon = d.createElement('img');
-
-    // No funciona como esperaba, ya que no distingue correctamente el lugar donde se hace click.
-    checkIcon.setAttribute('src', './images/icon-check.svg');
-    checkIcon.setAttribute('alt', 'Check Icon');
-    checkIcon.classList.add('check-icon');
+    let checkIcon = createIcon();
     check.appendChild(checkIcon);
-    check.appendChild(frontLayer);
+    check.appendChild(createFrontLayer(check, checkIcon, toLine, parent));
     check.setAttribute('class', 'check');
-    frontLayer.addEventListener('click', function(e) {
-        check.classList.toggle('checked');
-        toLine.classList.toggle('li-line');
-        checkIcon.classList.toggle('check-icon-block');
-    });
+    
     return check;
 }
 
-// Todo list events
+function createIcon() {
+    let checkIcon = d.createElement('img');
+    checkIcon.setAttribute('src', './images/icon-check.svg');
+    checkIcon.setAttribute('alt', 'Check Icon');
+    checkIcon.classList.add('check-icon');
+    return checkIcon;
+}
+
+function createFrontLayer(container, icon, toLine, parent) {
+    console.log('Parent',parent);
+    let frontLayer = d.createElement('div');
+    frontLayer.classList.add('front-layer');
+    frontLayer.addEventListener('click', function(e) {
+        parent.classList.toggle('ischeck');
+        container.classList.toggle('checked');
+        toLine.classList.toggle('li-line');
+        toLine.classList.toggle('isCheck');
+        icon.classList.toggle('check-icon-block');
+    });
+    return frontLayer;
+}
+
+
+function clearCompleted() {
+    let lista = d.querySelectorAll('.ischeck');
+    lista.forEach(el => el.remove());
+    counter.innerHTML =  d.querySelectorAll('.list').length - 1;
+}
