@@ -12,10 +12,18 @@ html {
   font-size: 18px;
 }
 
-.flex-center, .list .cross, .todo-input .cross, .list .check, .todo-input .check, .list .front-layer, .todo-input .front-layer, .todo-container {
+.flex-center, .todo-summary .center-options, .list .cross, .todo-input .cross, .list .check, .todo-input .check, .list .front-layer, .todo-input .front-layer, .todo-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
 }
 
 .todo-container {
@@ -128,6 +136,13 @@ html {
   cursor: pointer;
 }
 .todo-summary .clear:hover {
+  color: #cacde8;
+}
+.todo-summary .center-options div {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.todo-summary .center-options div:hover {
   color: #cacde8;
 }
 

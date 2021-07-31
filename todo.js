@@ -1,10 +1,20 @@
-console.log('hi there');
+(function () {
+    
 let d = document;
 let todoNew = d.querySelector('#todo-new');
 let todoList = d.querySelector('.todo-list');
 let counter = d.querySelector('#counter');
 let clearBtn = d.querySelector('.clear');
+
+let all = d.querySelector('.all');
+let actives = d.querySelector('.actives');
+let completed = d.querySelector('.completed');
+all.addEventListener('click', displayAll);
+actives.addEventListener('click', displayActive);
+completed.addEventListener('click', displayCompleted);
 clearBtn.addEventListener('click', clearCompleted);
+
+
 
 
 
@@ -82,3 +92,32 @@ function clearCompleted() {
     lista.forEach(el => el.remove());
     counter.innerHTML =  d.querySelectorAll('.list').length - 1;
 }
+
+function displayAll() {
+    let all = d.querySelectorAll('.newList');
+    console.log(all);
+}
+
+function displayActive() {
+    let actives = Array.from(d.querySelectorAll('.newList'));
+    // let activesFilter = actives.filter(el => ) 
+    console.log(actives);
+}
+
+
+function displayCompleted() {
+    let completed = d.querySelectorAll('.ischeck');
+    let notCompleted = d.querySelectorAll('.newList')
+    // If a element doen't have a '.ischeck' class it is hide and will only shows the completed ones
+    notCompleted.forEach(el => {
+        if(el.classList.contains('ischeck') === false) {
+            el.classList.add('hide');
+        }
+    });
+    counter.innerHTML =  completed.length;
+}
+
+
+
+
+})();

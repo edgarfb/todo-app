@@ -22,6 +22,12 @@ html {
     justify-content: center;
     align-items: center;
 }
+.hide {
+    display: none !important;
+}
+.show {
+    display: block !important;
+}
 .todo-container {
     @extend .flex-center;
     .background {
@@ -148,6 +154,17 @@ html {
     }
     .clear:hover {
         color: $dark-light-grayish-blue;
+    }
+
+    .center-options {
+        @extend .flex-center;
+        div {
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+        div:hover {
+            color: $dark-light-grayish-blue;
+        }
     }
     
 }
