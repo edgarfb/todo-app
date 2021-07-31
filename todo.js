@@ -6,15 +6,24 @@ let todoList = d.querySelector('.todo-list');
 let counter = d.querySelector('#counter');
 let clearBtn = d.querySelector('.clear');
 
-let all = d.querySelector('.all');
-let actives = d.querySelector('.actives');
-let completed = d.querySelector('.completed');
-all.addEventListener('click', displayAll);
-actives.addEventListener('click', displayActive);
-completed.addEventListener('click', displayCompleted);
+let all = d.querySelectorAll('.all');
+let actives = d.querySelectorAll('.actives');
+let completed = d.querySelectorAll('.completed');
+all.forEach(el => el.addEventListener('click', displayAll));
+actives.forEach(el => el.addEventListener('click', displayActive));
+completed.forEach(el => el.addEventListener('click', displayCompleted));
 clearBtn.addEventListener('click', clearCompleted);
+clearBtn.addEventListener('click', updateCompleted);
 
 
+let htmlDoc = d.querySelector('html');
+let switchThemeSun = d.querySelector('.switch-theme-sun');
+switchThemeSun.addEventListener('click', changeThemeDark);
+
+function changeThemeDark() {
+    htmlDoc.classList.toggle('light-theme');
+    // switchThemeSun.classList.toggle('hide');
+}
 
 
 
@@ -73,7 +82,6 @@ function createIcon() {
 }
 
 function createFrontLayer(container, icon, toLine, parent) {
-    console.log('Parent',parent);
     let frontLayer = d.createElement('div');
     frontLayer.classList.add('front-layer');
     frontLayer.addEventListener('click', function(e) {
@@ -90,12 +98,20 @@ function createFrontLayer(container, icon, toLine, parent) {
 function clearCompleted() {
     let lista = d.querySelectorAll('.ischeck');
     lista.forEach(el => el.remove());
-    counter.innerHTML =  d.querySelectorAll('.list').length - 1;
+    
+}
+
+function updateCompleted() {
+    counter.innerHTML = 0;
 }
 
 function displayAll() {
     let all = d.querySelectorAll('.newList');
-    console.log(all);
+    all.forEach(el => {
+        if(el.classList.contains('hide')) {
+            el.classList.remove('hide');
+        }
+    });
 }
 
 function displayActive() {
@@ -104,7 +120,7 @@ function displayActive() {
     let completed = actives.filter(el => el.classList.contains('ischeck'));
     activesFilter.forEach(el => el.classList.remove('hide'));
     completed.forEach(el => el.classList.add('hide'));
-    // continue here.... I need to refresh the items counter tought
+    counter.innerHTML = activesFilter.length;
 }
 
 

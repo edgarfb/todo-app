@@ -1,17 +1,57 @@
 @import 'reset';
 
-// primary
-$blue: hsl(220, 98%, 61%);
-$check: linear-gradient(#57ddff ,#c058f3);
+.dark-theme {
+    // primary
 
-// Dark Theme
-$dark-blue: hsl(235, 21%, 11%);
-$dark-blue-desaturated: hsl(235, 24%, 19%);
-$dark-light-grayish-blue: hsl(234, 39%, 85%);
-$dark-grayish-blue-hover: hsl(236, 33%, 92%);
-$dark-grayish-blue: hsl(234, 11%, 52%);
-$dark-very-grayish-blue: hsl(233, 14%, 35%);
-$dark-very-very-grayish-blue: hsl(237, 14%, 26%);
+    --title: white;
+    --blue: hsl(220, 98%, 61%);
+    --check: linear-gradient(#57ddff ,#c058f3);
+
+    --check-border: hsl(237, 14%, 26%);
+    --border-bottom: hsl(237, 14%, 26%);
+    --input-color: hsl(236, 33%, 92%);
+    
+    // Dark Theme
+    --back-bg: hsl(235, 21%, 11%);
+    --todo-list-bg: hsl(235, 24%, 19%);
+    --dark-grayish-blue-hover: hsl(237, 14%, 26%);
+    --dark-very-grayish-blue: hsl(233, 14%, 35%);
+    --dark-very-very-grayish-blue: hsl(237, 14%, 26%);
+
+    --bg-image-dark: url('./images/bg-desktop-dark.jpg');
+}
+.light-theme {
+    // primary
+
+    --title: white;
+    --blue: hsl(220, 98%, 61%);
+    --check: linear-gradient(#57ddff ,#c058f3);
+    --input-color: hsl(233, 14%, 35%);
+    
+    --border-bottom: hsl(236, 33%, 92%);
+    // Dark Theme
+    --back-bg: hsl(236, 33%, 92%);
+    --todo-list-bg: white;
+    --dark-light-grayish-blue: hsl(234, 39%, 85%);
+    --dark-grayish-blue-hover: hsl(236, 33%, 92%);
+    --dark-very-grayish-blue: hsl(233, 14%, 35%);
+    --dark-very-very-grayish-blue: hsl(237, 14%, 26%);
+
+    --bg-image-dark: url('./images/bg-desktop-light.jpg');
+}
+
+
+.origin-dark {
+    --color1: hsl(235, 21%, 11%);
+    --color2: hsl(235, 24%, 19%);
+    --color3: hsl(234, 39%, 85%);
+    --color4: hsl(236, 33%, 92%);
+    --color5: hsl(234, 11%, 52%);
+    --color6: hsl(233, 14%, 35%);
+    --color7: hsl(237, 14%, 26%);
+}
+
+
 
 html {
     font-family: 'Josefin Sans', sans-serif;
@@ -30,22 +70,21 @@ html {
 }
 .todo-container {
     @extend .flex-center;
+    min-width: 375px;
     .background {
         position: absolute;
         z-index: 0;
         top: 0;
         left: 0;
-        width: 100vh;
+        width: 100%;
         height: 100vh;
         .head-bg {
-            background-image: url('./images/bg-desktop-dark.jpg');
-            height: 30vh;
-            width: 100vw;
+            background-image: var(--bg-image-dark);
+            height: 35vh;
         }
         .bottom-bg {
-            background-color: $dark-blue;
-            height: 70vh;
-            width: 100vw;
+            background-color: var(--back-bg);
+            height: 65vh;
         }
     }
     
@@ -54,12 +93,11 @@ html {
     height: 100vh;
 }
 .todo {
-    width: 50%;
+    width: 90%;
     min-height: 450px;
-    min-width: 600px;
     z-index: 100;
     .todo-title {
-        color: white;
+        color: var(--title);
         display: flex;
         justify-content: space-between;
         h1 {
@@ -68,21 +106,22 @@ html {
         .todo-title-img img {
             cursor: pointer;
         }
+        .switch-theme-moon {
+            display: none;
+        }
     }
 }
-
 .list {
     display: flex;
     justify-content: space-between;
-    background: $dark-blue-desaturated;
-    color: white;
+    background: var(--todo-list-bg);
     padding: 1rem;
     .check {
         @extend .flex-center;
-        background-color: $check;
-        width: 18px;
-        height: 15px;
-        border: 1px solid $dark-very-very-grayish-blue;
+        background-color: var(--check);
+        width: 20px;
+        height: 19px;
+        border: 1px solid var(--check-border);
         border-radius: 50%;
         margin: 1.5px .5rem;
         position: relative;
@@ -93,8 +132,13 @@ html {
         cursor: pointer;
         position: absolute;
     }
+    // not liked
+    // .front-layer:hover {
+    //     border: 1px solid --blue;
+        
+    // }
     .checked {
-        background-image: $check;
+        background-image: var(--check);
     }
     .check-icon {
         display: none;
@@ -119,14 +163,15 @@ html {
         width: 100%;
         display: flex;
         align-items: center;
-        color: $dark-light-grayish-blue;
+        color: var(--input-color);
     }
     .li-line {
         text-decoration: line-through;
+        color: var(--dark-very-grayish-blue);
     }
 }
 .list {
-    border-bottom: 1px solid $dark-very-very-grayish-blue;
+    border-bottom: 1px solid var(--border-bottom);
 }
 
 
@@ -136,8 +181,14 @@ html {
     width: 100%;
     border: none;
     outline: none;
+    color: var(--input-color);
     
     
+}
+::placeholder {
+    color: var(--dark-very-grayish-blue);
+    font-family: 'Josefin Sans', sans-serif;
+    // font-size: 18px;
 }
 
 
@@ -145,7 +196,7 @@ html {
 
 .todo-summary {
     justify-content: space-between;
-    color: $dark-very-grayish-blue;
+    color: var(--dark-very-grayish-blue);
     font-size: .8rem;
     border: none;
 
@@ -153,18 +204,46 @@ html {
         cursor: pointer;
     }
     .clear:hover {
-        color: $dark-light-grayish-blue;
+        color: var(--dark-light-grayish-blue);
     }
+}
 
-    .center-options {
-        @extend .flex-center;
-        div {
-            margin-left: 1rem;
-            cursor: pointer;
-        }
-        div:hover {
-            color: $dark-light-grayish-blue;
-        }
+.center-options {
+    display: none;
+    @extend .flex-center;
+    div {
+        margin-left: 1rem;
+        cursor: pointer;
+    }
+    div:hover {
+        color: var(--dark-light-grayish-blue);
     }
     
+}
+
+.center-options-mobile {
+    @extend .center-options;
+    display: flex;
+    background-color: var(--todo-list-bg);
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border-radius: .3rem;
+    color: var(--dark-very-grayish-blue);
+}
+
+
+// Desktop
+@media (min-width:700px) {
+    .background {
+        width: 100%;
+    }
+    .todo {
+        width: 60%;
+    }
+    .center-options {
+        display: flex;
+    }
+    .center-options-mobile {
+        display: none;
+    }
 }
