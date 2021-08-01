@@ -1,6 +1,6 @@
 # Frontend Mentor - Calculator app solution
 
-This is a solution to the [Launch Countdown Timer challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This is a solution to the [Todo App challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -46,6 +46,7 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - CSS custom properties
+- SASS
 - Flexbox
 - Mobile-first workflow
 - Vanilla Javascript
@@ -53,11 +54,12 @@ Users should be able to:
 
 ### What I learned
 
-I digged more deeper on flexbox and try to use more semantic HTML tags. Also try to separation of concerns in CSS.
+I decided to solve this challenge without no library or framework to get a more deeper knowledge about javascript and DOM and I happy with my job. But also I figure out I need to keep going learnig becouse there is a lot to lear yet, and that is exciting to me. 
+Now to the next level.
 
 ### Continued development
 
-Next I want to apply Javascript on my next challenge.
+I'm going to learn React or improve my basic knowledge about Angular. Also I'm going read more about design pattern, data structure and algorithms to improve my code.
 
 
 ### Useful resources
