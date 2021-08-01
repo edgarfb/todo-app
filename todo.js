@@ -1,3 +1,6 @@
+
+// I use a self-invoked function to avoid namespace collisions
+
 (function () {
     
 let d = document;
@@ -6,6 +9,7 @@ let todoList = d.querySelector('.todo-list');
 let counter = d.querySelector('#counter');
 let clearBtn = d.querySelector('.clear');
 
+
 let all = d.querySelectorAll('.all');
 let actives = d.querySelectorAll('.actives');
 let completed = d.querySelectorAll('.completed');
@@ -13,16 +17,20 @@ all.forEach(el => el.addEventListener('click', displayAll));
 actives.forEach(el => el.addEventListener('click', displayActive));
 completed.forEach(el => el.addEventListener('click', displayCompleted));
 clearBtn.addEventListener('click', clearCompleted);
-clearBtn.addEventListener('click', updateCompleted);
+// clearBtn.addEventListener('click', updateCompleted);
 
 
+// Switcher themes
 let htmlDoc = d.querySelector('html');
-let switchThemeSun = d.querySelector('.switch-theme-sun');
-switchThemeSun.addEventListener('click', changeThemeDark);
+let switchTheme = d.querySelector('.front-layer-switcher');
+let sun = d.querySelector('.switch-theme-sun');
+let moon = d.querySelector('.switch-theme-moon');
+switchTheme.addEventListener('click', changeThemeDark);
 
 function changeThemeDark() {
     htmlDoc.classList.toggle('light-theme');
-    // switchThemeSun.classList.toggle('hide');
+    moon.classList.toggle('show');
+    sun.classList.toggle('hide');
 }
 
 
@@ -31,22 +39,28 @@ function changeThemeDark() {
 counter.innerHTML=  d.querySelectorAll('.list').length - 1;
 // Create new list when the user press enter
 todoNew.addEventListener('keyup', function(e) {
-    
+    let target = e.target.value;
     if(e.key === 'Enter') {
-        createTodo(e.target.value);
-        let listas = d.querySelectorAll('.list');
-        // reset input fild
-        todoNew.value = '';
-        // Set the current amout of itens
-        counter.innerHTML =  d.querySelectorAll('.list').length - 1;
+        // Empty value will be not create
+        if(target) {
+            target = capitalizer(target);
+            createTodo(target);
+            let listas = d.querySelectorAll('.list');
+            // reset input fild
+            todoNew.value = '';
+            // Set the current amout of itens
+            counter.innerHTML =  d.querySelectorAll('.list').length - 1;
+        }
+        
     }
 })
 
+// The first letter will be always capitalized
+function capitalizer(str) {
+    return str.replace(str[0], str[0].toUpperCase());;
+}
+
 // crear un nuevo elemento y agregarlo a la lista
-
-
-
-
 function createTodo(value) {
     let div = d.createElement('div');
     let li = d.createElement('li');
@@ -81,6 +95,7 @@ function createIcon() {
     return checkIcon;
 }
 
+// manages the behavior of the icon check and it container
 function createFrontLayer(container, icon, toLine, parent) {
     let frontLayer = d.createElement('div');
     frontLayer.classList.add('front-layer');
@@ -97,12 +112,17 @@ function createFrontLayer(container, icon, toLine, parent) {
 
 function clearCompleted() {
     let lista = d.querySelectorAll('.ischeck');
-    lista.forEach(el => el.remove());
+    
+    if(lista.length > 0) {
+        lista.forEach(el => el.remove());
+        updateCompleted();
+    }
     
 }
 
 function updateCompleted() {
-    counter.innerHTML = 0;
+    let all = d.querySelectorAll('.newList');
+    counter.innerHTML = all.length;
 }
 
 function displayAll() {
@@ -112,6 +132,7 @@ function displayAll() {
             el.classList.remove('hide');
         }
     });
+    counter.innerHTML = all.length;
 }
 
 function displayActive() {
@@ -128,6 +149,11 @@ function displayActive() {
 function displayCompleted() {
     let completed = d.querySelectorAll('.ischeck');
     let notCompleted = d.querySelectorAll('.newList')
+    completed.forEach(el => {
+        if(el.classList.contains('hide')) {
+            el.classList.remove('hide');
+        }
+    })
     // If a element doen't have a '.ischeck' class it is hide and will only shows the completed ones
     notCompleted.forEach(el => {
         if(el.classList.contains('ischeck') === false) {
@@ -136,8 +162,5 @@ function displayCompleted() {
     });
     counter.innerHTML =  completed.length;
 }
-
-
-
 
 })();

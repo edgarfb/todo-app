@@ -12,26 +12,41 @@ body {
   --blue: hsl(220, 98%, 61%);
   --check: linear-gradient(#57ddff ,#c058f3);
   --hover: hsl(236, 33%, 92%);
-  --check-border: hsl(237, 14%, 26%);
-  --border-bottom: hsl(237, 14%, 26%);
-  --input-color: hsl(236, 33%, 92%);
-  --font-color: hsl(233, 14%, 35%);
-  --back-bg: hsl(235, 21%, 11%);
-  --todo-list-bg: hsl(235, 24%, 19%);
+  --box-shadow: hsl(235, 21%, 11%);
+  --check-border: hsl(233, 14%, 35%);
+  --border-bottom: hsl(233, 14%, 35%);
+  --input-color: hsl(234, 39%, 85%);
+  --font-color: hsl(234, 11%, 52%);
+  --back-bg: hsl(235, 24%, 19%);
+  --todo-list-bg: hsl(235, 24%, 25%);
   --bg-image-dark: url("./images/bg-desktop-dark.jpg");
+  --bg-image-dark-mobile: url("./images/bg-mobile-dark.jpg");
+}
+
+.origin {
+  --VeryDarkBlue: hsl(235, 21%, 11%);
+  --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+  --LightGrayishBlue: hsl(234, 39%, 85%);
+  --LightGrayishBluehover: hsl(236, 33%, 92%);
+  --DarkGrayishBlue: hsl(234, 11%, 52%);
+  --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
+  --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 }
 
 .light-theme {
   --title: white;
   --blue: hsl(220, 98%, 61%);
   --check: linear-gradient(#57ddff ,#c058f3);
-  --input-color: hsl(233, 14%, 35%);
+  --check-border: hsl(234, 11%, 52%);
+  --input-color: hsl(234, 11%, 52%);
   --hover: hsl(235, 24%, 19%);
-  --font-color: hsl(233, 14%, 35%);
+  --font-color: hsl(234, 11%, 52%);
   --border-bottom: hsl(236, 33%, 92%);
   --back-bg: hsl(236, 33%, 92%);
   --todo-list-bg: white;
+  --box-shadow: hsl(234, 39%, 85%);
   --bg-image-dark: url("./images/bg-desktop-light.jpg");
+  --bg-image-dark-mobile: url("./images/bg-mobile-light.jpg");
 }
 
 html {
@@ -55,7 +70,7 @@ html {
 
 .todo-container {
   min-width: 350px;
-  height: 100vh;
+  min-height: 100vh;
 }
 .todo-container .background {
   position: absolute;
@@ -63,20 +78,22 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 .todo-container .background .head-bg {
-  background-image: var(--bg-image-dark);
-  height: 35vh;
+  background-image: var(--bg-image-dark-mobile);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 30vh;
 }
 .todo-container .background .bottom-bg {
   background-color: var(--back-bg);
-  height: 65vh;
+  min-height: 70vh;
 }
 
 .todo {
   width: 90%;
-  min-height: 450px;
+  min-height: 80vh;
   z-index: 100;
 }
 .todo .todo-title {
@@ -87,11 +104,47 @@ html {
 .todo .todo-title h1 {
   margin: 0;
 }
-.todo .todo-title .todo-title-img img {
+.todo .todo-title .todo-title-img {
+  position: relative;
+}
+.todo .todo-title .todo-title-img .front-layer-switcher {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
+}
+.todo .todo-title .todo-title-img img {
+  width: 100%;
 }
 .todo .todo-title .switch-theme-moon {
   display: none;
+}
+.todo .todo-new {
+  border-radius: 0.3rem;
+}
+.todo .todo-new input {
+  border-radius: 0.3rem;
+}
+.todo .todo-list {
+  height: 40vh;
+  overflow: overlay;
+  background: var(--todo-list-bg);
+  border-radius: 0.3rem 0.3rem 0 0;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background: var(--todo-list-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--check-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .list, .todo-input {
@@ -160,11 +213,18 @@ html {
   font-family: "Josefin Sans", sans-serif;
 }
 
+.shadow, .center-options-mobile, .todo-summary {
+  box-shadow: 0px 20px 70px 1px var(--box-shadow);
+  -webkit-box-shadow: 0px 20px 70px 1px var(--box-shadow);
+  -moz-box-shadow: 0px 20px 70px 1px var(--box-shadow);
+}
+
 .todo-summary {
   justify-content: space-between;
   color: var(--font-color);
   font-size: 0.8rem;
   border: none;
+  border-radius: 0 0 0.3rem 0.3rem;
 }
 .todo-summary .clear {
   cursor: pointer;
@@ -197,6 +257,10 @@ html {
 @media (min-width: 700px) {
   .background {
     width: 100%;
+  }
+
+  .head-bg {
+    background-image: var(--bg-image-dark);
   }
 
   .todo {
