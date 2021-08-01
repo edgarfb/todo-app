@@ -6,17 +6,14 @@
     --title: white;
     --blue: hsl(220, 98%, 61%);
     --check: linear-gradient(#57ddff ,#c058f3);
+    --hover: hsl(236, 33%, 92%);
 
     --check-border: hsl(237, 14%, 26%);
     --border-bottom: hsl(237, 14%, 26%);
     --input-color: hsl(236, 33%, 92%);
-    
-    // Dark Theme
+    --font-color: hsl(233, 14%, 35%);
     --back-bg: hsl(235, 21%, 11%);
     --todo-list-bg: hsl(235, 24%, 19%);
-    --dark-grayish-blue-hover: hsl(237, 14%, 26%);
-    --dark-very-grayish-blue: hsl(233, 14%, 35%);
-    --dark-very-very-grayish-blue: hsl(237, 14%, 26%);
 
     --bg-image-dark: url('./images/bg-desktop-dark.jpg');
 }
@@ -27,31 +24,14 @@
     --blue: hsl(220, 98%, 61%);
     --check: linear-gradient(#57ddff ,#c058f3);
     --input-color: hsl(233, 14%, 35%);
-    
+    --hover: hsl(235, 24%, 19%);
+    --font-color: hsl(233, 14%, 35%);
     --border-bottom: hsl(236, 33%, 92%);
-    // Dark Theme
     --back-bg: hsl(236, 33%, 92%);
     --todo-list-bg: white;
-    --dark-light-grayish-blue: hsl(234, 39%, 85%);
-    --dark-grayish-blue-hover: hsl(236, 33%, 92%);
-    --dark-very-grayish-blue: hsl(233, 14%, 35%);
-    --dark-very-very-grayish-blue: hsl(237, 14%, 26%);
 
     --bg-image-dark: url('./images/bg-desktop-light.jpg');
 }
-
-
-.origin-dark {
-    --color1: hsl(235, 21%, 11%);
-    --color2: hsl(235, 24%, 19%);
-    --color3: hsl(234, 39%, 85%);
-    --color4: hsl(236, 33%, 92%);
-    --color5: hsl(234, 11%, 52%);
-    --color6: hsl(233, 14%, 35%);
-    --color7: hsl(237, 14%, 26%);
-}
-
-
 
 html {
     font-family: 'Josefin Sans', sans-serif;
@@ -70,7 +50,7 @@ html {
 }
 .todo-container {
     @extend .flex-center;
-    min-width: 375px;
+    min-width: 350px;
     .background {
         position: absolute;
         z-index: 0;
@@ -132,11 +112,6 @@ html {
         cursor: pointer;
         position: absolute;
     }
-    // not liked
-    // .front-layer:hover {
-    //     border: 1px solid --blue;
-        
-    // }
     .checked {
         background-image: var(--check);
     }
@@ -167,7 +142,7 @@ html {
     }
     .li-line {
         text-decoration: line-through;
-        color: var(--dark-very-grayish-blue);
+        color: var(--font-color);
     }
 }
 .list {
@@ -186,17 +161,13 @@ html {
     
 }
 ::placeholder {
-    color: var(--dark-very-grayish-blue);
+    color: var(--font-color);
     font-family: 'Josefin Sans', sans-serif;
-    // font-size: 18px;
 }
-
-
-
 
 .todo-summary {
     justify-content: space-between;
-    color: var(--dark-very-grayish-blue);
+    color: var(--font-color);
     font-size: .8rem;
     border: none;
 
@@ -204,7 +175,8 @@ html {
         cursor: pointer;
     }
     .clear:hover {
-        color: var(--dark-light-grayish-blue);
+        color: var(--hover);
+        
     }
 }
 
@@ -216,7 +188,8 @@ html {
         cursor: pointer;
     }
     div:hover {
-        color: var(--dark-light-grayish-blue);
+        color: var(--hover);
+        font-weight: bold;
     }
     
 }
@@ -228,7 +201,7 @@ html {
     padding: 1rem 0;
     margin-top: 1rem;
     border-radius: .3rem;
-    color: var(--dark-very-grayish-blue);
+    color: var(--font-color);
 }
 
 
