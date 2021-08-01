@@ -23,16 +23,6 @@ body {
   --bg-image-dark-mobile: url("./images/bg-mobile-dark.jpg");
 }
 
-.origin {
-  --VeryDarkBlue: hsl(235, 21%, 11%);
-  --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
-  --LightGrayishBlue: hsl(234, 39%, 85%);
-  --LightGrayishBluehover: hsl(236, 33%, 92%);
-  --DarkGrayishBlue: hsl(234, 11%, 52%);
-  --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
-  --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
-}
-
 .light-theme {
   --title: white;
   --blue: hsl(220, 98%, 61%);
@@ -206,6 +196,8 @@ html {
   border: none;
   outline: none;
   color: var(--input-color);
+  font-weight: bold;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 ::placeholder {
@@ -231,6 +223,10 @@ html {
 }
 .todo-summary .clear:hover {
   color: var(--hover);
+}
+
+.active {
+  color: var(--blue);
 }
 
 .center-options, .center-options-mobile {

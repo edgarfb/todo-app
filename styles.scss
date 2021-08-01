@@ -1,23 +1,6 @@
 @import 'reset';
 
-// .dark-theme {
-//     // primary
 
-//     --title: white;
-//     --blue: hsl(220, 98%, 61%);
-//     --check: linear-gradient(#57ddff ,#c058f3);
-//     --hover: hsl(236, 33%, 92%);
-
-//     --check-border: hsl(237, 14%, 26%);
-//     --border-bottom: hsl(237, 14%, 26%);
-//     --input-color: hsl(234, 39%, 85%);
-//     --font-color: hsl(233, 14%, 35%);
-//     --back-bg: hsl(235, 21%, 11%);
-//     --todo-list-bg: hsl(235, 24%, 19%);
-
-//     --bg-image-dark: url('./images/bg-desktop-dark.jpg');
-//     --bg-image-dark-mobile: url('./images/bg-mobile-dark.jpg');
-// }
 .dark-theme {
     // primary
 
@@ -35,16 +18,6 @@
 
     --bg-image-dark: url('./images/bg-desktop-dark.jpg');
     --bg-image-dark-mobile: url('./images/bg-mobile-dark.jpg');
-}
-
-.origin {
-    --VeryDarkBlue: hsl(235, 21%, 11%);
-    --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
-    --LightGrayishBlue: hsl(234, 39%, 85%);
-    --LightGrayishBluehover: hsl(236, 33%, 92%);
-    --DarkGrayishBlue: hsl(234, 11%, 52%);
-    --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
-    --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 }
 
 
@@ -236,6 +209,8 @@ html {
     border: none;
     outline: none;
     color: var(--input-color);
+    font-weight: bold;
+    font-family: 'Josefin Sans', sans-serif;
     
     
 }
@@ -265,7 +240,9 @@ html {
         
     }
 }
-
+.active {
+    color:var(--blue);
+}
 .center-options {
     display: none;
     @extend .flex-center;

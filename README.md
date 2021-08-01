@@ -27,16 +27,18 @@ Users should be able to:
 ### Screenshot
 
 #### Desktop
-![screenshot desktop](./screenshot_desktop.png)
+![screenshot desktop-dark](./desktop-dark.png)
+![screenshot desktop-light](./desktop-light.png)
 
 #### Mobile
-![screenshot mobile](./screenshot_mobile.png)
+![screenshot mobile-dark](./mobile-dark.png)
+![screenshot mobile-light](./mobile-light.png)
 
 
 ### Links
 
-- Solution URL: [Github repo](https://github.com/edgarfb/launch-countdown-timer)
-- Live Site URL: [Calculator App](https://edgarfb.github.io/launch-countdown-timer/)
+- Solution URL: [Github repo](https://github.com/edgarfb/todo-app)
+- Live Site URL: [Todo App](https://edgarfb.github.io/todo-app/)
 
 ## My process
 
@@ -60,6 +62,7 @@ Next I want to apply Javascript on my next challenge.
 
 ### Useful resources
 
+- [Dark and Light theme switcher using CSS variables and pure JavaScript](https://medium.com/@haxzie/dark-and-light-theme-switcher-using-css-variables-and-pure-javascript-zocada-dd0059d72fa2)
 - [Frontend Master Bootcamp](https://frontendmasters.com/bootcamp/)
 
 #### Teachers

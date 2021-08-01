@@ -9,6 +9,25 @@ let todoList = d.querySelector('.todo-list');
 let counter = d.querySelector('#counter');
 let clearBtn = d.querySelector('.clear');
 
+// Add the active class
+
+let centerOptions = d.querySelectorAll('.center-options div');
+centerOptions.forEach(el => {
+    el.addEventListener('click', function(e) {
+        centerOptions.forEach(el => el.classList.remove('active'));
+        el.classList.add('active');
+    })
+    
+});
+let centerOptionsMobile = d.querySelectorAll('.center-options-mobile div');
+centerOptionsMobile.forEach(el => {
+    el.addEventListener('click', function(e) {
+        centerOptionsMobile.forEach(el => el.classList.remove('active'));
+        el.classList.add('active');
+    })
+    
+});
+
 
 let all = d.querySelectorAll('.all');
 let actives = d.querySelectorAll('.actives');
