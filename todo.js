@@ -84,10 +84,13 @@ function createTodo(value) {
     let div = d.createElement('div');
     let li = d.createElement('li');
     let check = createCheck(li, div);
+    let cross = createCross(div); 
     li.innerHTML = value;
     div.classList.add('list', 'newList');
+    
     div.appendChild(check);
     div.appendChild(li);
+    div.appendChild(cross);
     todoList.appendChild(div);
 }
 
@@ -104,6 +107,26 @@ function createCheck(toLine, parent) {
     check.setAttribute('class', 'check');
     
     return check;
+}
+
+function createCross(parent) {
+    let crossContainer = d.createElement('div');
+    let crossImg = d.createElement('img');
+    let list = d.querySelectorAll('.newList');
+    crossContainer.classList.add('flex-center');
+    crossImg.setAttribute('src', './images/icon-cross.svg');
+    crossImg.setAttribute('alt', 'cross icon');
+    crossImg.style.cursor = 'pointer';
+    crossImg.addEventListener('click', function(e) {
+        parent.remove();
+        updateCounter();
+    })
+    crossContainer.appendChild(crossImg);
+    return crossContainer;
+}   
+function updateCounter() {
+    let list = d.querySelectorAll('.newList');
+    counter.innerHTML = list.length;
 }
 
 function createIcon() {
@@ -167,7 +190,7 @@ function displayActive() {
 // Working..... 
 function displayCompleted() {
     let completed = d.querySelectorAll('.ischeck');
-    let notCompleted = d.querySelectorAll('.newList')
+    let notCompleted = d.querySelectorAll('.newList');
     completed.forEach(el => {
         if(el.classList.contains('hide')) {
             el.classList.remove('hide');
